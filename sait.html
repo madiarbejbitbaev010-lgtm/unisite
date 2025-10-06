@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UniCompass — Поиск университетов</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b') no-repeat center center/cover;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+
+    .container {
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      margin: 80px auto 20px;
+      padding: 40px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .top-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .top-buttons button {
+      padding: 6px 14px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #eee;
+      transition: 0.2s;
+    }
+
+    .top-buttons button:hover {
+      background: #ddd;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .search-box {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"], select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      width: 200px;
+    }
+
+    button.find {
+      background: #5a3fff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button.find:hover {
+      background: #452de0;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .filters button {
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      background: #f4f4f4;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .filters button:hover {
+      background: #ddd;
+    }
+
+    .universities {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+    }
+
+    .universities h2 {
+      margin-bottom: 20px;
+    }
+
+    .university-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .university-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 280px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .university-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px;
+        padding: 20px;
+      }
+      .filters {
+        grid-template-columns: 1fr;
+      }
+      .university-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="top-buttons">
+      <button>Тема</button>
+      <button>Войти</button>
+    </div>
+
+    <h1>Поиск университетов по городу, направлению и типу</h1>
+    <p>Введи направление или название университета. На телефоне всё подстроится автоматически.</p>
+
+    <div class="search-box">
+      <input type="text" placeholder="Например: программирование, медицина, Алматы">
+      <select>
+        <option>Город: Любой</option>
+        <option>Алматы</option>
+        <option>Астана</option>
+        <option>Шымкент</option>
+      </select>
+      <button class="find">Найти</button>
+      <button>Сброс</button>
+          </div>
+
+    <div class="filters">
+      <button>Все</button>
+      <button>Техника</button>
+      <button>Гуманитарные</button>
+      <button>Медицина</button>
+      <button>Бизнес</button>
+      <button>Гос. ВУЗ</button>
+    </div>
+
+    <p>Подсказка: попробуй ввести <b>“программирование”</b> или выбрать фильтр “Техника”.</p>
+  </div>
+
+  <!-- Университеты -->
+  <section class="universities">
+    <h2>Популярные университеты</h2>
+    <div class="university-list">
+      <div class="university-card" onclick="window.open('https://2z-m253.glide.page', '_blank')">
+        <h3>Astana International University</h3>
+        <p>Многопрофильный университет, Астана</p>
+      </div>
+
+      <div class="university-card" onclick="window.open('https://kaznu.kz/', '_blank')">
+        <h3>Евразийский национальный университет</h3>
+        <p>Журналистика, филология, тюркология, социальная работа.</p>
+      </div>
+
+      <div class="university-card" onclick="window.open('https://kimep.kz/', '_blank')">
+        <h3>Университет имени М. Нарикбаева</h3>
+        <p>Право, бизнес, международные отношения, управление</p>
+      </div>
+
+      <div class="university-card" onclick="window.open('https://amu.kz/', '_blank')">
+        <h3>Медицинский университет Астана</h3>
+        <p>Медицина, фармация</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
