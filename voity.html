@@ -12,34 +12,44 @@
             justify-content: center; 
             align-items: center; 
             height: 100vh; 
+            margin: 0;
         }
         .login-container {
             background: white; 
-            padding: 30px 40px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            width: 350px;
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            width: 360px;
+            text-align: center;
+        }
+        .login-container h2 {
+            margin-bottom: 25px;
+            color: #333;
         }
         input {
             width: 100%; 
-            padding: 10px; 
+            padding: 12px; 
             margin: 10px 0; 
-            border-radius: 5px; 
+            border-radius: 6px; 
             border: 1px solid #ccc; 
             font-size: 16px;
+            box-sizing: border-box;
         }
         button {
             width: 100%; 
-            padding: 12px; 
+            padding: 14px; 
             background: #4CAF50; 
             color: white; 
             border: none; 
             border-radius: 6px; 
             font-size: 16px;
             cursor: pointer;
+            margin-top: 10px;
         }
         button:hover { background: #45a049; }
-        .message { margin-top: 15px; color: red; }
+        .message { margin-top: 15px; font-weight: bold; }
+        .message.success { color: green; }
+        .message.error { color: red; }
     </style>
 </head>
 <body>
@@ -59,26 +69,25 @@
         ];
 
         function login() {
-            const iinInput = document.getElementById("iin").value;
+            const iinInput = document.getElementById("iin").value.trim();
             const passwordInput = document.getElementById("password").value;
             const messageDiv = document.getElementById("message");
 
+            // Проверяем пользователя
             const user = users.find(u => u.iin === iinInput && u.password === passwordInput);
             
             if(user){
-    messageDiv.style.color = "green";
-    messageDiv.textContent = "Успешный вход!";
-    
-    // Перенаправление на нужный сайт через 2 секунды
-    setTimeout(() => {
-        window.location.href = "https://madiarbejbitbaev010-lgtm.github.io/unisite/"; // <-- сюда ставишь нужный сайт
-    }, 2000); 
-} else {
-    messageDiv.style.color = "red";
-    messageDiv.textContent = "Неверный ИИН или пароль";
-}
+                messageDiv.textContent = "Успешный вход! Сейчас перенаправим...";
+                messageDiv.className = "message success";
+
+                // Мгновенный редирект на нужный сайт
+                window.location.href = "https://madiarbejbitbaev010-lgtm.github.io/unisite/";
+            } else {
+                messageDiv.textContent = "Неверный ИИН или пароль";
+                messageDiv.className = "message error";
+            }
         }
     </script>
 </body>
-
 </html>
+
