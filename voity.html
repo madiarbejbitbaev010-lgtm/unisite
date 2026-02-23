@@ -66,13 +66,19 @@
             const user = users.find(u => u.iin === iinInput && u.password === passwordInput);
             
             if(user){
-                messageDiv.style.color = "green";
-                messageDiv.textContent = "Успешный вход!";
-            } else {
-                messageDiv.style.color = "red";
-                messageDiv.textContent = "Неверный ИИН или пароль";
-            }
+    messageDiv.style.color = "green";
+    messageDiv.textContent = "Успешный вход!";
+    
+    // Перенаправление на нужный сайт через 2 секунды
+    setTimeout(() => {
+        window.location.href = "https://madiarbejbitbaev010-lgtm.github.io/unisite/"; // <-- сюда ставишь нужный сайт
+    }, 2000); 
+} else {
+    messageDiv.style.color = "red";
+    messageDiv.textContent = "Неверный ИИН или пароль";
+}
         }
     </script>
 </body>
+
 </html>
