@@ -11,6 +11,12 @@
       margin: 0;
       padding: 0;
       color: #222;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .dark-theme {
+      background: #121212;
+      color: #eee;
     }
 
     .container {
@@ -20,6 +26,12 @@
       margin: 80px auto 20px;
       padding: 40px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .dark-theme .container {
+      background: rgba(0,0,0,0.85);
+      color: #eee;
     }
 
     .top-buttons {
@@ -38,8 +50,17 @@
       transition: 0.2s;
     }
 
+    .dark-theme .top-buttons button {
+      background: #333;
+      color: #eee;
+    }
+
     .top-buttons button:hover {
       background: #ddd;
+    }
+
+    .dark-theme .top-buttons button:hover {
+      background: #555;
     }
 
     h1 {
@@ -59,6 +80,7 @@
       justify-content: center;
       gap: 10px;
       margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
     input[type="text"], select {
@@ -66,6 +88,12 @@
       border: 1px solid #ccc;
       border-radius: 8px;
       width: 200px;
+    }
+
+    .dark-theme input, .dark-theme select {
+      background: #222;
+      border: 1px solid #555;
+      color: #eee;
     }
 
     button.find {
@@ -98,8 +126,17 @@
       transition: 0.2s;
     }
 
+    .dark-theme .filters button {
+      background: #333;
+      color: #eee;
+    }
+
     .filters button:hover {
       background: #ddd;
+    }
+
+    .dark-theme .filters button:hover {
+      background: #555;
     }
 
     .universities {
@@ -126,7 +163,12 @@
       padding: 20px;
       width: 280px;
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s, color 0.3s;
+    }
+
+    .dark-theme .university-card {
+      background: #1e1e1e;
+      color: #eee;
     }
 
     .university-card:hover {
@@ -149,14 +191,15 @@
 
     .container a {
       text-decoration: none;
+      color: inherit;
+    }
   </style>
 </head>
 <body>
-
   <div class="container">
     <div class="top-buttons">
-      <button>Тема</button>
-      <button><a href="voity.html" class="zxc">Войти</a></button>
+      <button id="theme-btn">Тема</button>
+      <button><a href="voity.html">Войти</a></button>
     </div>
 
     <h1>Поиск университетов по городу, направлению и типу</h1>
@@ -172,7 +215,7 @@
       </select>
       <button class="find">Найти</button>
       <button>Сброс</button>
-          </div>
+    </div>
 
     <div class="filters">
       <button>Все</button>
@@ -212,8 +255,11 @@
     </div>
   </section>
 
+  <script>
+    const themeBtn = document.getElementById('theme-btn');
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+    });
+  </script>
 </body>
-
 </html>
-
-
