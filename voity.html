@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход по ИИН</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #f0f0f0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+        }
+        .login-container {
+            background: white; 
+            padding: 30px 40px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 350px;
+        }
+        input {
+            width: 100%; 
+            padding: 10px; 
+            margin: 10px 0; 
+            border-radius: 5px; 
+            border: 1px solid #ccc; 
+            font-size: 16px;
+        }
+        button {
+            width: 100%; 
+            padding: 12px; 
+            background: #4CAF50; 
+            color: white; 
+            border: none; 
+            border-radius: 6px; 
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover { background: #45a049; }
+        .message { margin-top: 15px; color: red; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Вход по ИИН</h2>
+        <input type="text" id="iin" placeholder="Введите ИИН" maxlength="12">
+        <input type="password" id="password" placeholder="Введите пароль">
+        <button onclick="login()">Войти</button>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        // Пример "базы данных" пользователей
+        const users = [
+            {iin: "070411502412", password: "A@12Ay07"},
+            {iin: "060803500445", password: "musaev123"}
+        ];
+
+        function login() {
+            const iinInput = document.getElementById("iin").value;
+            const passwordInput = document.getElementById("password").value;
+            const messageDiv = document.getElementById("message");
+
+            const user = users.find(u => u.iin === iinInput && u.password === passwordInput);
+            
+            if(user){
+                messageDiv.style.color = "green";
+                messageDiv.textContent = "Успешный вход!";
+            } else {
+                messageDiv.style.color = "red";
+                messageDiv.textContent = "Неверный ИИН или пароль";
+            }
+        }
+    </script>
+</body>
+</html>
